@@ -1,21 +1,25 @@
-# basic.py
+# basic.py - A basic guess a number game implementation.
 
 import os
 from random import randint
 
+# Print simple game menu.
 def print_menu():
     os.system("clear")
     print("\nGuess a number...\n")
     print("\nGuess a number between 1-100\n")
 
+# Prompt user for number of guesses they would like.
 def get_difficulty():
     return(input('\nHow many guesses would you like: '))
 
+# Get a random number between 1 and 100.
 def get_random_number():
     return randint(0,100)
 
+# Prompt user for their guess.
 def get_guess():
-    return input('\nYour guess: ')
+    return input('Your guess: ')
 
 
 def run_game():
@@ -46,7 +50,6 @@ def run_game():
             print('\nSorry, You Lose\n')
             run = False
             exit(0)
-
 
 
 # Start the game
