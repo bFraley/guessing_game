@@ -20,9 +20,19 @@ def get_guess_count():
     else:
         return int(guess_count)
 
+# Prompt user to choose a range.
+def get_game_range():
+    target_range = input('\nHow large of a range would you like?')
+
+    if not target_range.isdigit():
+        print('Just enter a number..like 100 or 10000000')
+        return get_game_range()
+    else:
+        return int(target_range)
+
 # Get a random number between 1 and 100.
-def get_random_number():
-    return randint(0, 100)
+def get_random_number(in_range):
+    return randint(0, in_range)
 
 # Prompt user for their guess.
 def get_guess():
@@ -32,7 +42,7 @@ def get_guess():
 def run_game():
     print_menu()
     max_guesses = get_guess_count()
-    target_number = get_random_number()
+    target_number = get_random_number(get_game_range())
     guess_count = 0
     run = True
     win = False
@@ -51,6 +61,12 @@ def run_game():
         if guess == target_number:
             win = True
             print('CORRECT GUESS, You win!\n')
+            again = input('Play again? (y or n)')
+
+            if again.upper() == 'Y':
+                run_game()
+            else:
+                exit(0)
 
         elif guess > target_number:
             print('Too high!')
